@@ -88,25 +88,14 @@ end)
 function QBCore.Functions.Notify(text, texttype, length)
     if type(text) == "table" then
         local ttext = text.text or 'Placeholder'
-        local caption = text.caption or 'Placeholder'
+        local caption = text.caption or 'Notificaion'
         texttype = texttype or 'primary'
         length = length or 5000
-        SendNUIMessage({
-            action = 'notify',
-            type = texttype,
-            length = length,
-            text = ttext,
-            caption = caption
-        })
+        exports['dopeNotify2']:Alert(caption, ttext, length, texttype)
     else
         texttype = texttype or 'primary'
         length = length or 5000
-        SendNUIMessage({
-            action = 'notify',
-            type = texttype,
-            length = length,
-            text = text
-        })
+        exports['dopeNotify2']:Alert('Notificacion', text, length, texttype)
     end
 end
 
